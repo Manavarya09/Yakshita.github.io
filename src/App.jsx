@@ -154,32 +154,17 @@ function App() {
 
       {/* CV Button - Fixed bottom left */}
       <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-2">
-        <button
-          onClick={handleViewCV}
-          onContextMenu={(e) => {
-            e.preventDefault()
-            window.open('/cv.pdf', '_blank')
-          }}
-          disabled={isCvLoading}
-          className="group flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-pastel-lavender to-pastel-mint text-dark font-semibold rounded-2xl shadow-2xl hover:from-pastel-mint hover:to-pastel-pink transition-all duration-300 transform hover:scale-105 hover:shadow-pastel-lavender/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-          title="Click to view CV in new tab. Right-click for alternative opening method."
+        <a
+          href="/cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-pastel-lavender to-pastel-mint text-dark font-semibold rounded-2xl shadow-2xl hover:from-pastel-mint hover:to-pastel-pink transition-all duration-300 transform hover:scale-105 hover:shadow-pastel-lavender/25"
+          title="Click to view CV in new tab."
         >
-          {isCvLoading ? (
-            <>
-              <div className="w-5 h-5 border-2 border-dark border-t-transparent rounded-full animate-spin"></div>
-              <span>Opening CV...</span>
-            </>
-          ) : (
-            <>
-              <FileText className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-              <span>View my CV</span>
-            </>
-          )}
-          
-          {/* Button glow effect */}
+          <FileText className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+          <span>View my CV</span>
           <div className="absolute inset-0 bg-gradient-to-r from-pastel-lavender to-pastel-mint rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300 -z-10"></div>
-        </button>
-        
+        </a>
         {/* Direct link as fallback */}
         <a
           href="/cv.pdf"
